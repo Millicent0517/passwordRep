@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import * as SplashScreen from 'expo-splash-screen';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import LoginScreen from './LoginScreen'; // Import the login screen component
 import MainApp from './MainApp'; // Import the main app component
-
-
-
-
-
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,12 +21,21 @@ const App = () => {
         setIsLoggedIn(true);
     };
 
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+    };
+
     return (
         <View style={styles.container}>
             {isLoggedIn ? (
-                <MainApp />
+                <MainApp onLogout={handleLogout} />
             ) : (
                 <LoginScreen onLogin={handleLogin} />
+            )}
+            {isLoggedIn && (
+                <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+                    <Text style={styles.logoutButtonText}>Logout</Text>
+                </TouchableOpacity>
             )}
         </View>
     );
@@ -41,10 +44,23 @@ const App = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#f0f0f0',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f0f0f0',
-        padding: 20,
+        position: 'relative',
+    },
+    logoutButton: {
+        position: 'absolute',
+        bottom: 20,
+        alignSelf: 'center',
+        backgroundColor: 'red',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+    },
+    logoutButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
     },
 });
 

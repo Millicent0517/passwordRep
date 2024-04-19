@@ -14,7 +14,7 @@ const PrettySquare = ({ label, value, onChangeText, placeholder }) => (
     </View>
 );
 
-const MainApp = () => {
+const MainApp = ({ onLogout }) => {
     const [site, setSite] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -128,12 +128,12 @@ const MainApp = () => {
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => (
                         <TouchableOpacity
-                            style={[styles.row, selectedItem === item && styles.selectedRow]}
+                            style={styles.row}
                             onPress={() => setSelectedItem(item)}
                         >
-                            <Text style={[styles.rowText, styles.bold]}>Site: {item.site}</Text>
-                            <Text style={[styles.rowText, styles.bold]}>Username: {item.username}</Text>
-                            <Text style={[styles.rowText, styles.bold]}>Password: {item.password}</Text>
+                            <Text style={styles.rowText}>Site: {item.site}</Text>
+                            <Text style={styles.rowText}>Username: {item.username}</Text>
+                            <Text style={styles.rowText}>Password: {item.password}</Text>
                         </TouchableOpacity>
                     )}
                 />
@@ -164,13 +164,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#f0f0f0',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
+        position: 'relative',
     },
     titleBox: {
         backgroundColor: '#e9e9e9',
         padding: 10,
         borderRadius: 10,
         marginBottom: 20,
+        width: '100%',
+        alignItems: 'center',
     },
     title: {
         fontSize: 24,
@@ -189,19 +191,19 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     label: {
-        marginBottom: 5, // Move the label below the input
+        marginBottom: 5,
         fontWeight: 'bold',
         color: '#333',
         fontSize: 16,
     },
     input: {
-        width: '100%', // Set input width to 100% of container
-        height: 50, // Set fixed height
+        width: '100%',
+        height: 50,
         paddingHorizontal: 10,
         fontSize: 16,
         borderWidth: 1,
         borderColor: '#ccc',
-        borderRadius: 5, // Add rounded corners
+        borderRadius: 5,
     },
     tableContainer: {
         backgroundColor: '#fff',
@@ -224,12 +226,6 @@ const styles = StyleSheet.create({
     },
     rowText: {
         marginRight: 10,
-    },
-    bold: {
-        fontWeight: 'bold',
-    },
-    selectedRow: {
-        backgroundColor: '#e6e6e6',
     },
     buttonsContainer: {
         flexDirection: 'row',
