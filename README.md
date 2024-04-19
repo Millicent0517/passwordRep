@@ -5,8 +5,11 @@ Password Repository
 Features:
 •	Login screen- Username, Password- (You can write anything for your username and password for testing)
 •	Users can access, add, update, edit or delete and remove their stored passwords after logging in. The application facilitates the management of login credentials by offering input boxes for site URLs, usernames, and passwords.
+
 •	The application's intuitive interface makes it simple for users to explore and interact with it. It has clear input fields and labels.
 Installation
+
+If you press and hold a line of entry, two new options to edit or delete the entry will appear. 
 
 
 To run this project. Here are the following steps:
