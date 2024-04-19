@@ -7,6 +7,8 @@ Features:
 •	Users can access, add, update, edit or delete and remove their stored passwords after logging in. The application facilitates the management of login credentials by offering input boxes for site URLs, usernames, and passwords.
 •	The application's intuitive interface makes it simple for users to explore and interact with it. It has clear input fields and labels.
 Installation
+
+
 To run this project. Here are the following steps:
 1.	Clone the Repository. 
 2.	Navigate to the project directory.
